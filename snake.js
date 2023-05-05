@@ -127,9 +127,15 @@ function update() {
       (obstacle) => obstacle.x === newHead.x && obstacle.y === newHead.y
     )
   ) {
-    alert("Game Over!");
-    window.location.reload();
-    return;
+    // 弹出游戏结束的消息框
+    const restart = confirm("Game Over! Do you want to restart the game?");
+    if (restart) {
+      // 如果用户选择重新开始游戏，重新加载页面
+      window.location.reload();
+    } else {
+      // 如果用户选择不重新开始游戏，直接返回
+      return;
+    }
   }
 
   // 将新的头部添加到贪吃蛇的数组中
