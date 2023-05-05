@@ -1,8 +1,8 @@
 // 创建一个画布
 const canvas = document.createElement("canvas");
 const ctx = canvas.getContext("2d");
-canvas.width = 800; // 将画布宽度增大一倍
-canvas.height = 800; // 将画布高度增大一倍
+canvas.width = 600; // 将画布宽度变为600
+canvas.height = 600; // 将画布高度变为600
 document.body.appendChild(canvas);
 
 
@@ -45,25 +45,25 @@ startGame();
 
 // 定义贪吃蛇的初始状态
 
-  let snake = [{ x: 10, y: 10 }];
-  let direction = "right";
+let snake = [{ x: 10, y: 10 }];
+let direction = "right";
 
-  // 定义食物的初始状态
-  let food = {
-    x: Math.floor(Math.random() * 40),
-    y: Math.floor(Math.random() * 40),
-  };
+// 定义食物的初始状态
+let food = {
+  x: Math.floor(Math.random() * 30),
+  y: Math.floor(Math.random() * 30),
+};
 
-  // 定义障碍的初始状态
-  let obstacles = [];
-  let maxObstacles = 4;
-  let numObstacles = 1;
-  for (let i = 0; i < numObstacles; i++) {
-    obstacles.push({
-      x: Math.floor(Math.random() * 40),
-      y: Math.floor(Math.random() * 40),
-    });
-  }
+// 定义障碍的初始状态
+let obstacles = [];
+let maxObstacles = 4;
+let numObstacles = 1;
+for (let i = 0; i < numObstacles; i++) {
+  obstacles.push({
+    x: Math.floor(Math.random() * 30),
+    y: Math.floor(Math.random() * 30),
+  });
+}
 
 // 绘制贪吃蛇、食物和障碍
 function draw() {
@@ -104,12 +104,12 @@ function update() {
 
   // 如果贪吃蛇到达边缘，从另一侧出现
   if (newHead.x < 0) {
-    newHead.x = 39;
-  } else if (newHead.x > 39) {
+    newHead.x = 29;
+  } else if (newHead.x > 29) {
     newHead.x = 0;
   } else if (newHead.y < 0) {
-    newHead.y = 39;
-  } else if (newHead.y > 39) {
+    newHead.y = 29;
+  } else if (newHead.y > 29) {
     newHead.y = 0;
   }
 
@@ -130,14 +130,14 @@ function update() {
   // 如果贪吃蛇吃到了食物，更新食物的位置
   if (snake[0].x === food.x && snake[0].y === food.y) {
     food = {
-      x: Math.floor(Math.random() * 40),
-      y: Math.floor(Math.random() * 40),
+      x: Math.floor(Math.random() * 30),
+      y: Math.floor(Math.random() * 30),
     };
     if (numObstacles < maxObstacles) {
       numObstacles++;
       obstacles.push({
-        x: Math.floor(Math.random() * 40),
-        y: Math.floor(Math.random() * 40),
+        x: Math.floor(Math.random() * 30),
+        y: Math.floor(Math.random() * 30),
       });
     }
   } else {
@@ -165,4 +165,3 @@ function gameLoop() {
   draw();
   setTimeout(gameLoop, 150);
 }
-
