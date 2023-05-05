@@ -1,3 +1,4 @@
+
 // 创建一个画布
 const canvas = document.createElement("canvas");
 const ctx = canvas.getContext("2d");
@@ -5,6 +6,13 @@ canvas.width = 600; // 将画布宽度变为600
 canvas.height = 600; // 将画布高度变为600
 document.body.appendChild(canvas);
 
+// 在画布左边添加文字
+const text = document.createElement("p");
+text.textContent = "**红色是食物,灰色是障碍,要避开,不然会'Game Over'";
+text.style.position = "absolute";
+text.style.left = "10px";
+text.style.top = canvas.offsetTop + "px";
+document.body.appendChild(text);
 
 // 绘制背景
 ctx.fillStyle = "#EEE";
@@ -165,3 +173,4 @@ function gameLoop() {
   draw();
   setTimeout(gameLoop, 150);
 }
+
